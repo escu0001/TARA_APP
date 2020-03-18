@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tara_app/screens/wrapper.dart';
+import 'package:tara_app/screens/authenticate/flash.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-home: Wrapper(),
+    home: Flash(),
           );
     
   }

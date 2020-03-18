@@ -3,7 +3,7 @@ import 'package:tara_app/models/user.dart';
 
 class AuthService {
 
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+ static final FirebaseAuth _auth = FirebaseAuth.instance;
 
 //create user obj based on FirebaseUser
 User _userFromFirebaseUser(FirebaseUser user) {
@@ -26,7 +26,15 @@ return _userFromFirebaseUser(user);
 print(e.toString());
 return null;
 }
+}
 
+static void login(String email, String password) async{
+  try {
+    await _auth.signInWithEmailAndPassword(email: email, password: password);
+  } catch(e) {
+    print(e);
+  }
+}
 }
 
 //sign in with email and password
@@ -37,4 +45,3 @@ return null;
 
 //sign out 
 
-}

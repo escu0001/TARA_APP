@@ -12,6 +12,7 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
 
         
@@ -76,8 +77,12 @@ child:
           Text('Login'),
           color: Colors.red[500]
           )
-  )
-
+  ),
+Container(
+padding: EdgeInsets.fromLTRB(0, 10, 0, 0), 
+child: 
+Text('Sign Up Instead', style: TextStyle( fontSize: 16)),
+)
     ])
         ),
 Positioned(
