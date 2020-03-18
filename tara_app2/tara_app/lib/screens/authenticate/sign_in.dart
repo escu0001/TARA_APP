@@ -28,18 +28,20 @@ class _SignInState extends State<SignIn> {
               ),
 
 Positioned(top: 50, left: 30,
-child: Text('Login', style: TextStyle(fontSize: 60, color: Colors.white ),),
+child: Text('Login', style: TextStyle(fontSize: 60, color: Colors.white, fontFamily: 'Roboto'),),
 ),
 
 Container(
-  child: Column(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.center,
+  child: 
+  Column(crossAxisAlignment: CrossAxisAlignment.center, 
+          mainAxisAlignment: MainAxisAlignment.center,
     children: <Widget>[
 
 Container(
   margin: const EdgeInsets.all(12.0),
   child:
         TextField(
-          obscureText: true,
+          obscureText: false,
           decoration: InputDecoration(
             border: OutlineInputBorder(),
             labelText: 'Email',
@@ -58,20 +60,26 @@ child:
           ),
         )
 ),
-  ]),
-),
-Positioned(
-  bottom:200, right: 40,
-  child:
+  
+
+  
+  Container(
+    padding: EdgeInsetsDirectional.only(),
+    width:250.0,
+    child:
         RaisedButton(
+          padding: EdgeInsets.all(10),
           onPressed: () {
               
             },
           child: 
-          Text('Go'),
-          color: Colors.red[100]
+          Text('Login'),
+          color: Colors.red[500]
           )
-),
+  )
+
+    ])
+        ),
 Positioned(
   bottom: 20,
   child: 
