@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tara_app/screens/authenticate/sign_in.dart';
 import 'package:tara_app/services/auth.dart';
 
 
@@ -10,6 +11,16 @@ class Flash extends StatefulWidget {
 class _FlashState extends State<Flash> {
   final _formKey = GlobalKey<FormState>();
   String _email, _password;
+
+
+Future navigateToSubPage(context) async {
+  Navigator.push(context, MaterialPageRoute(builder: (context) => SignIn()));
+}
+
+//MAKE THIS WHEN WE HAVE A SIGN UP PAGE
+//Future navigateToSubPage(context) async {
+  //Navigator.push(context, MaterialPageRoute(builder: (context) => SignUp()));
+//}
 
 
 _submit() {
@@ -57,7 +68,9 @@ double Height = MediaQuery.of(context).size.height;
             padding: EdgeInsets.all(10),
             width: 240,
             child: RaisedButton(
-    onPressed: () {},
+    onPressed: () {
+      navigateToSubPage(context);
+    },
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(80.0)),
     padding: EdgeInsets.all(0.0),
     child: Ink(
@@ -91,7 +104,7 @@ double Height = MediaQuery.of(context).size.height;
             padding: EdgeInsets.all(10),
             width: 240,
             child: RaisedButton(
-    onPressed: () {},
+    onPressed: () {navigateToSubPage(context);},
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(80.0)),
     padding: EdgeInsets.all(0.0),
     child: Ink(

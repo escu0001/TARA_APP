@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:tara_app/main.dart';
 import 'package:tara_app/services/auth.dart';
+import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
+import 'package:tara_app/screens/home/home.dart';
+import 'package:tara_app/screens/authenticate/sliding_cards.dart';
+import 'package:tara_app/screens/authenticate/home_page.dart';
 
 class SignIn extends StatefulWidget {
   @override
@@ -8,99 +13,158 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
 
+ final _formKey = GlobalKey<FormState>();
+  String _email, _password;
+
+
+_submit() {
+  if (_formKey.currentState.validate()){
+    _formKey.currentState.save();
+    //Logging in the user w/firebase
+    AuthService.login(_email, _password);
+    print(_email );
+  }
+}
+
   final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.white,
-
-        
-      body: 
-      SafeArea(
+    return 
+      Scaffold(
+        resizeToAvoidBottomInset: false,
+        body:
+        SizedBox.expand( 
         child:
-      Stack(
-        children: <Widget>[
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,           
+            children: <Widget>[
+              Container(),
               Container(
-            decoration: BoxDecoration(
-              color: const Color(0xff7c94b6),
-              image: const DecorationImage(image: NetworkImage('https://i.postimg.cc/x1FV4TjV/21343.jpg'), fit: BoxFit.fill)
-              )
+                padding: EdgeInsets.symmetric(vertical:50),
+                child:
+                  Text(
+                          'TARA',
+                          style: TextStyle(fontSize: 60, fontFamily: 'Roboto', color:Color(0xff374ABE))                          
+                        ),
               ),
 
-Positioned(top: 50, left: 30,
-child: Text('Login', style: TextStyle(fontSize: 60, color: Colors.white, fontFamily: 'Roboto'),),
-),
 
-Container(
-  child: 
-  Column(crossAxisAlignment: CrossAxisAlignment.center, 
-          mainAxisAlignment: MainAxisAlignment.center,
-    children: <Widget>[
-
-Container(
-  margin: const EdgeInsets.all(12.0),
-  child:
-        TextField(
-          obscureText: false,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            labelText: 'Email',
-          ),
-        ),
-),
-
-Container(
-  margin: const EdgeInsets.all(12.0),
-child:
-        TextField(
-          obscureText: true,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            labelText: 'Password',
-          ),
-        )
-),
-  
-
-  
-  Container(
-    padding: EdgeInsetsDirectional.only(),
-    width:250.0,
-    child:
-        RaisedButton(
-          padding: EdgeInsets.all(10),
-          onPressed: () {
+              Container(
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 40),                
+              child:
+               TextFormField(
+              decoration: InputDecoration(labelText:'Email', fillColor: Colors.orange, 
+              border: new 
+              OutlineInputBorder(borderRadius: 
+              new BorderRadius.circular(25), 
+              borderSide: new BorderSide(),),
+              //fillColor = Colors.green
+              ),
+              validator: (input)=>!input.contains('@')
+              ?'Enter a valid email'
+              :null,
+              onSaved: (input)=> _email = input) 
+              ),
               
-            },
-          child: 
-          Text('Login'),
-          color: Colors.red[500]
-          )
-  ),
-Container(
-padding: EdgeInsets.fromLTRB(0, 10, 0, 0), 
-child: 
-Text('Sign Up Instead', style: TextStyle( fontSize: 16)),
-)
-    ])
-        ),
-Positioned(
-  bottom: 20,
-  child: 
-  RaisedButton(
-    onPressed: () async{
-dynamic result = await _auth.signInAnon();
-    if (result ==null) {
-      print('Error Signing In');}
-      else {print('Signed in');
-      print(result.uid);
-      }
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+                child:
+               TextFormField(
+                 obscureText: true,
+              decoration: InputDecoration(labelText:'Password', fillColor: Colors.orange, 
+              border: new 
+              OutlineInputBorder(borderRadius: 
+              new BorderRadius.circular(25), 
+              borderSide: new BorderSide(),),
+              //fillColor = Colors.green
+              ),
+              validator: (input)=> input.length <= 6
+              ?'Enter a valid email'
+              :null,
+              onSaved: (input)=> _password = input) 
+              ),
+              
+              
+          Container(
+            padding: EdgeInsets.all(10),
+            width: 240,
+            child: RaisedButton(
+    onPressed: () {
+      _submit();
+      
     },
-    child: Text('Sign In Anonymously') ,)
-  )
-    ])
-    ));
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(80.0)),
+    padding: EdgeInsets.all(0.0),
+    child: Ink(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(colors: [Color(0xff374ABE), Color(0xff64B6FF)],
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+          ),
+          borderRadius: BorderRadius.circular(30.0)
+      ),
+      child: Container(
+        constraints: BoxConstraints(maxWidth: 300.0, minHeight: 50.0),
+        alignment: Alignment.center,
+        child: Text(
+          "Login",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontFamily: 'Roboto'
+          ),
+        ),
+      ),
+    ),
+  ),
+          )  ,
+Container(
+  child: 
+  Text('Forgot Password?')
+)
+,
+
+          //SOCIAL MEDIA BUTTONS
+           Container(
+            padding: EdgeInsets.only(top: 100, bottom: 20),
+            alignment: FractionalOffset.bottomCenter,
+                child:
+                Column(
+                  children: <Widget> [
+                    
+                      SizedBox(
+                      width: 260,
+                      child:
+                              FacebookSignInButton(
+                                
+                    onPressed: () {Navigator.push(
+
+context, MaterialPageRoute(builder:(context)=>Dashboard())
+
+
+                    ); },    
+                  )), 
+                   SizedBox(
+                      width: 260, 
+                      child:
+                              GoogleSignInButton(
+                    onPressed: () {Navigator.push(
+
+context, MaterialPageRoute(builder:(context)=>HomePage())
+
+
+                    ); },  
+                              )
+                  ),
+                                
+                  ] )  )                   
+                  ],)
+    
+      )
+  );
+  
     
   }
 }

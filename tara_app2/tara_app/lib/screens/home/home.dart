@@ -27,18 +27,22 @@ class Dashboard extends StatelessWidget {
           children: <Widget>[
 
             Container(
-              margin: const EdgeInsets.only(bottom: 50, top: 30),
+              margin: const EdgeInsets.only(bottom: 50, top: 30, left: 10),
               child:
-            Text('Welcome Back, User',
-            style: TextStyle(fontSize: 30, color: Colors.red[300])),
+            Text('Welcome Back', //replace this with some name variable eventually
+            style: TextStyle(fontSize: 30, color: Colors.black, fontFamily: 'Roboto') ),
             ),
 
         Container(
           margin: const EdgeInsets.all(12.0),
           decoration: new BoxDecoration(
-            border: Border.all(color: Colors.grey, width: 1),
+          
+            border: Border.all(color: Colors.blue, width: 1),
             borderRadius: BorderRadius.all(Radius.circular(5)),
-            
+             gradient: LinearGradient(colors: [Color(0xff374ABE), Color(0xff64B6FF)],
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+          )
           ) ,
           child:
           Padding(
@@ -49,39 +53,84 @@ class Dashboard extends StatelessWidget {
                 Expanded(
                   child:
           Text('Medication Manager',
-          style: TextStyle(fontSize: 22), textAlign: TextAlign.center),),
-            Expanded(
-              child:
-              Align(alignment: Alignment.centerRight, child:
-          
-          Icon(
-            Icons.check_box,
-            color: Colors.red[300],
-            size: 40.0,
-           
-          )
-            )
-            )
+          style: TextStyle(fontSize: 22,color: Colors.white), textAlign: TextAlign.center))
               ])
             )
             ),
 
-            Container(
+             Container(
           margin: const EdgeInsets.all(12.0),
           decoration: new BoxDecoration(
-            border: Border.all(color: Colors.grey, width: 1),
+          
+            border: Border.all(color: Colors.blue, width: 1),
             borderRadius: BorderRadius.all(Radius.circular(5)),
-            
+             gradient: LinearGradient(colors: [Color(0xff374ABE), Color(0xff64B6FF)],
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+          )
           ) ,
           child:
           Padding(
             padding: EdgeInsets.all(12),
             child:
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child:
           Text('Exercise Tracker',
-          style: TextStyle(fontSize: 20), textAlign: TextAlign.center)
+          style: TextStyle(fontSize: 22,color: Colors.white), textAlign: TextAlign.center))
+              ])
             )
+            ),
+ Container(
+          margin: const EdgeInsets.all(12.0),
+          decoration: new BoxDecoration(
+          
+            border: Border.all(color: Colors.blue, width: 1),
+            borderRadius: BorderRadius.all(Radius.circular(5)),
+             gradient: LinearGradient(colors: [Color(0xff374ABE), Color(0xff64B6FF)],
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+          )
+          ) ,
+          child:
+          Padding(
+            padding: EdgeInsets.all(12),
+            child:
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child:
+          Text('Appointments',
+          style: TextStyle(fontSize: 22,color: Colors.white), textAlign: TextAlign.center))
+              ])
             )
+            ),
 
+             Container(
+          margin: const EdgeInsets.all(12.0),
+          decoration: new BoxDecoration(
+          
+            border: Border.all(color: Colors.blue, width: 1),
+            borderRadius: BorderRadius.all(Radius.circular(5)),
+             gradient: LinearGradient(colors: [Color(0xff374ABE), Color(0xff64B6FF)],
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+          )
+          ) ,
+          child:
+          Padding(
+            padding: EdgeInsets.all(12),
+            child:
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child:
+          Text('Resources',
+          style: TextStyle(fontSize: 22,color: Colors.white), textAlign: TextAlign.center))
+              ])
+            )
+            ),
           ]
         )
 
