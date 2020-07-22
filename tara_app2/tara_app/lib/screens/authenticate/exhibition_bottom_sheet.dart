@@ -87,7 +87,6 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                   SheetHeader(
                     fontSize: headerFontSize,
                     topMargin: headerTopMargin,
-                    
                   ),
                   for (Event event in events) _buildFullItem(event),
                   for (Event event in events) _buildIcon(event),
@@ -208,7 +207,7 @@ class ExpandedEventItem extends StatelessWidget {
         Row(
           children: <Widget>[
             Text(
-              '1 ticket',
+              '',
               style: TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: 12,
@@ -231,7 +230,7 @@ class ExpandedEventItem extends StatelessWidget {
           children: <Widget>[
             Icon(Icons.place, color: Colors.grey.shade400, size: 16),
             Text(
-              'Science Park 10 25A',
+              'TEST TASK',
               style: TextStyle(color: Colors.grey.shade400, fontSize: 13),
             )
           ],
@@ -242,9 +241,9 @@ class ExpandedEventItem extends StatelessWidget {
 }
 
 final List<Event> events = [
-  Event('steve-johnson.jpeg', 'Shenzhen GLOBAL DESIGN AWARD 2018', '4.20-30'),
-  Event('efe-kurnaz.jpg', 'Shenzhen GLOBAL DESIGN AWARD 2018', '4.20-30'),
-  Event('rodion-kutsaev.jpeg', 'Dawan District Guangdong Hong Kong', '4.28-31'),
+  Event('', 'TEST OBJECT', ''),
+  Event('', 'TEST OBJECT', ''),
+  Event('', 'TEST OBJECT', ''),
 ];
 
 class Event {
@@ -266,33 +265,26 @@ class SheetHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: topMargin,
-      left: 0,
-
-            child: Column(
-        children: <Widget> [
-        Text(
-        'Today',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 25,
-          fontWeight: FontWeight.w500,
-        ),
-      ),
-      Text(
-        "Swipe up to see today's rehab tasks",
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 16,
-          fontWeight: FontWeight.w100,
-        ),
-      ),
-      
-        ]
-    )
-    
-    
-    );
+        top: topMargin,
+        left: 0,
+        child: Column(children: <Widget>[
+          Text(
+            'Today',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 25,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          Text(
+            "Swipe up to see today's rehab tasks",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.w100,
+            ),
+          ),
+        ]));
   }
 }
 
